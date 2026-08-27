@@ -113,6 +113,7 @@ document.getElementById("pertanyaanB").textContent = pertanyaanB[indexB].t;
 const jawabA = document.querySelector(".jawabA");
 jawabA.onclick = () => {
   const inputA = document.getElementById("jawabanA").value.toLowerCase().trim();
+
   document.getElementById("jawabanA").value = "";
 
   if (inputA === pertanyaanA[indexA].j) {
@@ -143,6 +144,7 @@ jawabA.onclick = () => {
 const jawabB = document.querySelector(".jawabB");
 jawabB.onclick = () => {
   const inputB = document.getElementById("jawabanB").value.toLowerCase().trim();
+
   document.getElementById("jawabanB").value = "";
 
   if (inputB === pertanyaanB[indexB].j) {
