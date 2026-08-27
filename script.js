@@ -227,7 +227,11 @@ buatKeyboard("keyboardB", "jawabanB");
 
 //Putar backsound supporter
 // Fungsi untuk memutar suara supporter sekali saja saat layar diklik
-function putarBacksound() {
+function putarBacksound(e) {
+  // // Jika yang diklik adalah icon, jangan putar supporter
+  if (e.target.closest(".icon")) {
+    return;
+  }
   soundSuporter.loop = true; // Opsional: Agar lagu otomatis mengulang terus saat habis
   soundSuporter.volume = 0.5; // Opsional: Mengecilkan suara supporter agar tidak menutupi sound benar/salah (rentang 0.0 - 1.0)
 
@@ -244,3 +248,15 @@ function putarBacksound() {
 
 // Pasang sensor klik global pada dokumen
 document.addEventListener("click", putarBacksound);
+
+// Jika icon diklik
+const icon = document.querySelector("#icon ");
+
+icon.addEventListener("click", function (e) {
+  // Hentikan event agar tidak diteruskan ke document
+  e.stopPropagation();
+  // Matikan supporter
+  soundSuporter.pause();
+  // Opsional: kembali ke awal
+  soundSuporter.currentTime = 0;
+});
