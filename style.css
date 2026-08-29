@@ -211,6 +211,13 @@ button {
   margin-top: 50px;
 }
 
+.start {
+  background-color: greenyellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .countdown {
   width: 100vw;
   height: 100vh;
