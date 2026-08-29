@@ -1,10 +1,37 @@
-const gambar = document.querySelector(".gambar img");
+const gambar = document.querySelector(".bg img");
 
 // Audio
 const soundBenar = new Audio("sound/benar.mp3");
 const soundSalah = new Audio("sound/salah.mp3");
 const soundMenang = new Audio("sound/winner.mp3");
-const soundSuporter = new Audio("sound/supporter.mp3");
+// const soundSuporter = new Audio("sound/supporter.mp3");
+
+const start = document.querySelector(".startGame");
+const countdown = document.querySelector(".countdown");
+start.addEventListener("click", () => {
+  countdown.style.display = "flex";
+  start.style.display = "none";
+  hitungMundur();
+});
+
+function hitungMundur() {
+  let angka = 5;
+  setInterval(() => {
+    const countdownEl = document.querySelector(".text");
+    const container = document.querySelector(".container");
+    countdownEl.innerHTML = angka;
+
+    if (angka <= 0) {
+      countdownEl.innerHTML = "GO!";
+    }
+
+    if (angka < 0) {
+      container.style.display = "grid";
+    }
+
+    angka--;
+  }, 1000);
+}
 
 let posisi = 0;
 
@@ -175,19 +202,19 @@ jawabB.onclick = () => {
 function cekPemenang() {
   const alertPemenangA = document.querySelector(".alert-pemenangA");
   const alertPemenangB = document.querySelector(".alert-pemenangB");
-  const game = document.querySelector(".game");
+  const bg = document.querySelector(".bg");
   if (posisi <= -14) {
     soundMenang.play();
     // alert("TIM A MENANG!");
     alertPemenangA.style.display = "block";
-    game.style.opacity = "0.1";
+    bg.style.opacity = "0.1";
   }
 
   if (posisi >= 14) {
     soundMenang.play();
     // alert("TIM B MENANG!");
     alertPemenangB.style.display = "block";
-    game.style.opacity = "0.1";
+    bg.style.opacity = "0.1";
   }
 }
 
@@ -210,10 +237,10 @@ function buatKeyboard(idKeyboard, inputTarget) {
     keyboard.appendChild(tombol);
   });
 
-  // Tombol Backspace
+  // Tombol delete
   const back = document.createElement("div");
   back.className = "key big";
-  back.textContent = "DELETE";
+  back.textContent = "DEL";
   back.onmousedown = (e) => e.preventDefault();
   back.onclick = () => {
     let inp = document.getElementById(inputTarget);
