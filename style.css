@@ -46,6 +46,7 @@ body {
   display: flex;
   align-items: center;
   position: relative;
+  justify-content: center;
 }
 
 #icon {
@@ -67,7 +68,7 @@ body {
   z-index: -9;
 }
 .bg img {
-  width: 100%;
+  width: 90%;
   height: 50%;
   min-width: 0;
   transition: transform 0.5s ease-out; /* ANIMASI GESER HALUS */
